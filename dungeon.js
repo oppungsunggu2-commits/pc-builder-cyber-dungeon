@@ -1,55 +1,57 @@
-// Pengelola Peta Cyber Dungeon
-const DungeonManager = {
-    rooms: [
-        { id: 1, name: "RUANGAN 01 — LAB AWAL", desc: "Perbaiki masalah ketidakcocokan Socket CPU dan Motherboard.", unlocked: true, completed: false },
-        { id: 2, name: "RUANGAN 02 — PC RUSAK", desc: "Komputer mati mendadak akibat daya PSU yang kurang.", unlocked: false, completed: false },
-        { id: 3, name: "RUANGAN 03 — LAB PROCESSOR", desc: "Rakit sistem berperforma tinggi tanpa mengalami overheating.", unlocked: false, completed: false },
-        { id: 4, name: "RUANGAN 04 — LAB MEMORI", desc: "Uji pencocokan tipe memori RAM dan Motherboard.", unlocked: false, completed: false },
-        { id: 5, name: "RUANGAN 05 — RUANG POWER", desc: "Selesaikan perhitungan konsumsi daya listrik seluruh komponen.", unlocked: false, completed: false },
-        { id: 6, name: "RUANGAN 06 — KOMPUTER INTI", desc: "Rakit PC impian utuh untuk mengaktifkan kembali Inti Cyber.", unlocked: false, completed: false }
+// Logika Peta Dungeon & Level Game
+const CyberDungeon = {
+    levels: [
+        { id: 1, name: "Lab 1: Komputer Kantoran Dasar", reqXp: 0, desc: "Rakit PC kantor standar dengan budget minim." },
+        { id: 2, name: "Lab 2: Upgrade Dual Channel RAM", reqXp: 100, desc: "Pasang Dual Channel RAM untuk performa multitasking." },
+        { id: 3, name: "Lab 3: PC Gaming Entry-Level", reqXp: 250, desc: "Rakit PC gaming murah dengan Dedicated GPU." },
+        { id: 4, name: "Lab 4: Manajemen Daya & PSU", reqXp: 450, desc: "Pilih Power Supply bersertifikasi agar sistem aman." },
+        { id: 5, name: "Lab 5: PC Streamer & Editing", reqXp: 700, desc: "Kombinasi CPU Multi-core dan RAM kapasitas besar." },
+        { id: 6, name: "Lab 6: Sistem Pendingin AIO Liquid", reqXp: 1000, desc: "Mengatasi Overheating dengan Liquid Cooler." },
+        { id: 7, name: "Lab 7: Stasiun Workstation 3D", reqXp: 1350, desc: "Rakit PC spesifikasi ekstrem untuk rendering." },
+        { id: 8, name: "Lab 8: Troubleshooting No Display", reqXp: 1750, desc: "Diagnosa dan perbaiki masalah monitor hitam." },
+        { id: 9, name: "Lab 9: Diagnosa PC Boot Loop", reqXp: 2200, desc: "Atasi masalah komputer yang mati nyala sendiri." },
+        { id: 10, name: "Lab Final: Cyber Master Rig", reqXp: 2700, desc: "Rakit PC impian terbaik di dunia Cyber Dungeon!" }
     ],
 
     init() {
-        this.renderRooms();
+        this.renderMap();
     },
 
-    renderRooms() {
-        const container = document.getElementById('dungeon-rooms-container');
-        if (!container) return;
-        container.innerHTML = '';
+    renderMap() {
+        const grid = document.getElementById('dungeon-grid');
+        if (!grid) return;
+        
+        grid.innerHTML = '';
+        const currentXp = parseInt(localStorage.getItem('cyber_xp') || '0');
 
-        this.rooms.forEach(room => {
+        this.levels.forEach(lvl => {
+            const isUnlocked = currentXp >= lvl.reqXp;
             const card = document.createElement('div');
-            let statusClass = room.completed ? 'completed' : (room.unlocked ? 'unlocked' : 'locked');
-            let statusText = room.completed ? '✅ TERSELESAIKAN' : (room.unlocked ? 'TERBUKA' : '🔒 TERKUNCI');
-
-            card.className = `room-card ${statusClass}`;
+            card.className = `dungeon-card ${isUnlocked ? 'unlocked' : 'locked'}`;
+            card.style.cssText = "border: 1px solid #00f3ff; margin: 10px; padding: 15px; background: rgba(0,243,255,0.1); border-radius: 5px; cursor: pointer;";
+            
             card.innerHTML = `
-                <span class="room-status">${statusText}</span>
-                <h3>${room.name}</h3>
-                <p style="font-size:0.85rem; color: var(--text-muted); margin-top:8px;">${room.desc}</p>
+                <div class="level-badge" style="color: #00f3ff; font-weight: bold;">LEVEL ${lvl.id}</div>
+                <h4 style="margin: 5px 0; color: #fff;">${lvl.name}</h4>
+                <p style="font-size: 12px; color: #ccc;">${lvl.desc}</p>
+                <div class="status" style="margin-top: 10px; font-weight: bold; color: ${isUnlocked ? '#00ff88' : '#ff0055'};">
+                    ${isUnlocked ? '🔓 TERBUKA (KLIK UNTUK MASUK)' : `🔒 TERKUNCI (Butuh ${lvl.reqXp} XP)`}
+                </div>
             `;
 
-            if (room.unlocked) {
+            if (isUnlocked) {
                 card.addEventListener('click', () => {
-                    AssemblyLab.loadRoomMission(room);
-                    MainApp.switchView('view-assembly-lab');
+                    if (window.CyberAssembly) {
+                        window.CyberAssembly.loadLevel(lvl.id);
+                    }
                 });
             }
 
-            container.appendChild(card);
+            grid.appendChild(card);
         });
-    },
-
-    completeRoom(roomId) {
-        const current = this.rooms.find(r => r.id === roomId);
-        if (current) {
-            current.completed = true;
-            const next = this.rooms.find(r => r.id === roomId + 1);
-            if (next) next.unlocked = true;
-            this.renderRooms();
-            MainApp.addXP(150);
-            MainApp.saveProgress();
-        }
     }
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+    CyberDungeon.init();
+});
