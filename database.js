@@ -7,9 +7,9 @@ const CyberDatabase = {
     async init() {
         try {
             const [compRes, compatRes, questRes] = await Promise.all([
-                fetch('data/components.json'),
-                fetch('data/compatibility.json'),
-                fetch('data/questions.json')
+                fetch('components.json'),
+                fetch('compatibility.json'),
+                fetch('questions.json')
             ]);
 
             this.components = await compRes.json();
