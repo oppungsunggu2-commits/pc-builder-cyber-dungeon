@@ -1,0 +1,526 @@
+:root {
+    --bg-dark: #0a0d14;
+    --panel-dark: #121824;
+    --panel-border: #1e293b;
+    --neon-blue: #00f0ff;
+    --neon-green: #00ff66;
+    --neon-red: #ff0055;
+    --neon-yellow: #ffcc00;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --font-cyber: 'Courier New', Courier, monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-cyber);
+}
+
+body.cyber-theme {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animasi Latar Belakang Cyber Grid */
+.cyber-bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(10, 13, 20, 0.92), rgba(10, 13, 20, 0.92)),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 240, 255, 0.05) 3px, rgba(0, 240, 255, 0.05) 4px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* HUD Header */
+.cyber-hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: var(--panel-dark);
+    border-bottom: 2px solid var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.logo-title .glitch-text {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.logo-title small {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+.hud-stats {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border: 1px solid var(--neon-blue);
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.stat-box .label {
+    color: var(--text-muted);
+    margin-right: 4px;
+}
+
+.stat-box .value {
+    color: var(--neon-green);
+    font-weight: bold;
+}
+
+/* Tombol Cyber */
+.btn-cyber {
+    background: transparent;
+    color: var(--neon-blue);
+    border: 1px solid var(--neon-blue);
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+}
+
+.btn-cyber:hover, .btn-cyber:active {
+    background: var(--neon-blue);
+    color: var(--bg-dark);
+    box-shadow: 0 0 12px var(--neon-blue);
+}
+
+.btn-primary {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background: var(--neon-green);
+    color: var(--bg-dark);
+    box-shadow: 0 0 12px var(--neon-green);
+}
+
+.btn-accent {
+    border-color: var(--neon-yellow);
+    color: var(--neon-yellow);
+}
+
+.btn-accent:hover, .btn-accent:active {
+    background: var(--neon-yellow);
+    color: var(--bg-dark);
+}
+
+.btn-success {
+    background: var(--neon-green);
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+}
+
+.btn-success:hover, .btn-success:active {
+    background: #00cc52;
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+.btn-cyber-sm {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    background: transparent;
+    border: 1px solid var(--neon-red);
+    color: var(--neon-red);
+    cursor: pointer;
+}
+
+.btn-cyber-back {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Wadah Tampilan Screen */
+.view-screen {
+    display: none;
+    padding: 20px 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.view-screen.active {
+    display: block;
+}
+
+/* Tampilan Menu Utama */
+#view-main-menu {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.hero-title h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--neon-blue);
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--neon-blue);
+    margin-bottom: 5px;
+}
+
+.hero-title h2 {
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+    color: var(--neon-green);
+    margin-bottom: 10px;
+}
+
+.hero-title .subtitle {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+/* Tampilan Peta Cyber Dungeon */
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--panel-border);
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dungeon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 15px;
+}
+
+.room-card {
+    background: var(--panel-dark);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    padding: 16px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.room-card.unlocked {
+    border-color: var(--neon-blue);
+    cursor: pointer;
+}
+
+.room-card.unlocked:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+.room-card.completed { border-color: var(--neon-green); }
+.room-card.locked { opacity: 0.5; cursor: not-allowed; }
+
+.room-card .room-status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.room-card.unlocked .room-status { background: rgba(0, 240, 255, 0.2); color: var(--neon-blue); }
+.room-card.completed .room-status { background: rgba(0, 255, 102, 0.2); color: var(--neon-green); }
+.room-card.locked .room-status { background: rgba(255, 0, 85, 0.2); color: var(--neon-red); }
+
+/* Tampilan Ensiklopedia */
+.encyclopedia-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.cyber-input, .cyber-select {
+    background: var(--panel-dark);
+    border: 1px solid var(--neon-blue);
+    color: var(--text-main);
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.cyber-input { flex: 1; min-width: 180px; }
+
+.encyclopedia-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 15px;
+    min-height: 500px;
+}
+
+.hardware-list {
+    background: var(--panel-dark);
+    border: 1px solid var(--panel-border);
+    overflow-y: auto;
+    padding: 10px;
+    max-height: 450px;
+}
+
+.hardware-item-btn {
+    width: 100%;
+    padding: 10px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--panel-border);
+    color: var(--text-main);
+    text-align: left;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.hardware-item-btn:hover, .hardware-item-btn.active {
+    border-color: var(--neon-blue);
+    background: rgba(0, 240, 255, 0.1);
+}
+
+.hardware-detail-panel {
+    background: var(--panel-dark);
+    border: 1px solid var(--panel-border);
+    padding: 15px;
+    overflow-y: auto;
+}
+
+/* Tata Letak Bengkel Perakitan */
+.assembly-workspace {
+    display: grid;
+    grid-template-columns: 260px 1fr 300px;
+    gap: 15px;
+}
+
+.inventory-panel, .system-monitor-panel {
+    background: var(--panel-dark);
+    border: 1px solid var(--panel-border);
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.inventory-list {
+    max-height: 480px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.inventory-item {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--panel-border);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    cursor: grab;
+    user-select: none;
+}
+
+.inventory-item:hover { border-color: var(--neon-blue); }
+
+.motherboard-board {
+    background: #0d1a1a;
+    border: 2px solid var(--neon-blue);
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.board-header {
+    text-align: center;
+    color: var(--neon-blue);
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.motherboard-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.drop-slot {
+    background: rgba(0,0,0,0.6);
+    border: 2px dashed var(--text-muted);
+    min-height: 90px;
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.drop-slot.drag-over {
+    border-color: var(--neon-green);
+    background: rgba(0, 255, 102, 0.1);
+}
+
+.drop-slot.filled {
+    border-style: solid;
+    border-color: var(--neon-blue);
+}
+
+.slot-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+/* Monitor Sistem Metric */
+.metric-group { margin-bottom: 12px; }
+.metric-group label { font-size: 0.75rem; display: block; margin-bottom: 4px; }
+.progress-bar-bg { background: #000; height: 10px; border-radius: 5px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: var(--neon-green); transition: width 0.3s; }
+
+.diagnostic-box {
+    background: #000;
+    border: 1px solid var(--panel-border);
+    padding: 8px;
+    min-height: 100px;
+    font-size: 0.75rem;
+    color: var(--neon-green);
+    margin-bottom: 12px;
+}
+
+.btn-full { width: 100%; }
+
+/* Modal Styles */
+.cyber-modal {
+    display: none;
+    position: fixed;
+    top:0; left:0; width:100vw; height:100vh;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.cyber-modal.active { display: flex; }
+
+.modal-content {
+    background: var(--panel-dark);
+    border: 2px solid var(--neon-blue);
+    width: 100%;
+    max-width: 550px;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.quiz-opt-btn {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--panel-border);
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.quiz-opt-btn:hover { border-color: var(--neon-blue); }
+
+.feedback-box {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    display: none;
+}
+
+.feedback-box.correct { background: rgba(0,255,102,0.2); border: 1px solid var(--neon-green); color: var(--neon-green); }
+.feedback-box.wrong { background: rgba(255,0,85,0.2); border: 1px solid var(--neon-red); color: var(--neon-red); }
+
+.hidden { display: none !important; }
+
+/* Responsive untuk HP & Tablet */
+@media (max-width: 1024px) {
+    .assembly-workspace {
+        grid-template-columns: 1fr;
+    }
+    
+    .inventory-list {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        max-height: none;
+        padding-bottom: 5px;
+    }
+
+    .inventory-item {
+        min-width: 160px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .encyclopedia-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .motherboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cyber-hud {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hud-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "rules": [
+    {
+      "rule": "CPU_MOTHERBOARD_SOCKET",
+      "check": "cpu.compatibility.socket == motherboard.compatibility.socket",
+      "error_message": "TIDAK KOMPATIBEL: Socket CPU tidak cocok dengan Socket Motherboard!",
+      "solution": "Gunakan CPU dan Motherboard yang menggunakan tipe socket sejenis (misalnya: AM4 dengan AM4)."
+    },
+    {
+      "rule": "RAM_MOTHERBOARD_TYPE",
+      "check": "ram.compatibility.ram_type == motherboard.compatibility.ram_type",
+      "error_message": "TIDAK KOMPATIBEL: Tipe RAM tidak sesuai dengan slot pada Motherboard!",
+      "solution": "Pastikan jenis memori RAM (DDR4 / DDR5) sesuai dengan slot yang disediakan Motherboard."
+    },
+    {
+      "rule": "POWER_CAPACITY",
+      "check": "total_system_watt <= psu.capacity",
+      "error_message": "DAYA TIDAK CUKUP: Total konsumsi daya komponen melebihi kapasitas Power Supply!",
+      "solution": "Gunakan Power Supply (PSU) dengan kapasitas Watt yang lebih besar."
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulator Perakit PC: Cyber Dungeon</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="cyber-theme">
+    <div class="cyber-bg-animation"></div>
+
+    <!-- HUD / Status Bar -->
+    <header class="cyber-hud">
+        <div class="logo-title">
+            <span class="glitch-text">CYBER DUNGEON</span>
+            <small>Simulator Perakit PC</small>
+        </div>
+        <div class="hud-stats">
+            <div class="stat-box">
+                <span class="label">LEVEL:</span>
+                <span id="player-level" class="value">1</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">XP:</span>
+                <span id="player-xp" class="value">0</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">PROGRES:</span>
+                <span id="game-progress" class="value">0%</span>
+            </div>
+            <button id="btn-save-reset" class="btn-cyber-sm">Reset Simpanan</button>
+        </div>
+    </header>
+
+    <main id="app-container">
+        <!-- ================= UTAMA: MENU UTAMA ================= -->
+        <section id="view-main-menu" class="view-screen active">
+            <div class="hero-title">
+                <h1 class="cyber-glitch" data-text="SIMULATOR PERAKIT PC">SIMULATOR PERAKIT PC</h1>
+                <h2>CYBER DUNGEON</h2>
+                <p class="subtitle">Game Edukasi Perakitan Komputer & Solusi Perbaikan Hardware</p>
+            </div>
+
+            <div class="menu-buttons">
+                <button id="btn-start-game" class="btn-cyber btn-primary">MULAI PERMAINAN</button>
+                <button id="btn-encyclopedia" class="btn-cyber">ENSIKLOPEDIA HARDWARE</button>
+                <button id="btn-how-to-play" class="btn-cyber">CARA BERMAIN</button>
+                <button id="btn-settings" class="btn-cyber">PENGATURAN</button>
+            </div>
+        </section>
+
+        <!-- ================= PETA: CYBER DUNGEON MAP ================= -->
+        <section id="view-dungeon-map" class="view-screen">
+            <div class="view-header">
+                <h2>PETA CYBER DUNGEON</h2>
+                <button class="btn-cyber-back btn-to-menu">← Menu Utama</button>
+            </div>
+            <p class="section-desc">Pilih ruangan untuk memperbaiki masalah hardware dan menyelesaikan misi perakitan.</p>
+            
+            <div class="dungeon-grid" id="dungeon-rooms-container">
+                <!-- Grid Ruangan akan di-render dinamis oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- ================= ENSIKLOPEDIA & QUIZ ================= -->
+        <section id="view-encyclopedia" class="view-screen">
+            <div class="view-header">
+                <h2>ENSIKLOPEDIA HARDWARE & QUIZ</h2>
+                <button class="btn-cyber-back btn-to-menu">← Menu Utama</button>
+            </div>
+            
+            <div class="encyclopedia-controls">
+                <input type="text" id="search-hardware" placeholder="Cari komponen (mis: AM4, GPU, DDR4)..." class="cyber-input">
+                <select id="filter-category" class="cyber-select">
+                    <option value="ALL">Semua Kategori</option>
+                    <option value="Processor">Processor (CPU)</option>
+                    <option value="Motherboard">Motherboard</option>
+                    <option value="Memory">Memori (RAM)</option>
+                    <option value="Graphics Card">Kartu Grafis (GPU)</option>
+                    <option value="Power Supply">Power Supply (PSU)</option>
+                    <option value="Storage">Penyimpanan (SSD/HDD)</option>
+                    <option value="Cooling">Pendingin (Cooler & Fan)</option>
+                </select>
+                <button id="btn-open-quiz" class="btn-cyber btn-accent">Mulai Quiz Hardware (+XP)</button>
+            </div>
+
+            <div class="encyclopedia-layout">
+                <div class="hardware-list" id="hardware-list-container"></div>
+                <div class="hardware-detail-panel" id="hardware-detail-panel">
+                    <div class="placeholder-text">Pilih salah satu komponen dari daftar di samping untuk melihat spesifikasi, fungsi, dan fakta edukasi secara rinci.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= BENGKEL PERAKITAN ================= -->
+        <section id="view-assembly-lab" class="view-screen">
+            <div class="view-header">
+                <h2 id="room-lab-title">RUANG BENGKEL PERAKITAN</h2>
+                <button class="btn-cyber-back btn-to-map">← Kembali ke Peta</button>
+            </div>
+
+            <div class="mission-brief-bar" id="mission-brief-bar">
+                <!-- Ringkasan Misi -->
+            </div>
+
+            <div class="assembly-workspace">
+                <!-- Panel Inventaris -->
+                <div class="inventory-panel">
+                    <h3>📦 INVENTARIS HARDWARE</h3>
+                    <div class="inventory-list" id="inventory-list-container"></div>
+                </div>
+
+                <!-- Papan Interaktif Motherboard -->
+                <div class="motherboard-board">
+                    <div class="board-header">PAPAN MOTHERBOARD INTERAKTIF</div>
+                    <div class="motherboard-layout">
+                        <div class="drop-slot" data-slot-type="CPU" id="slot-cpu">
+                            <span class="slot-label">Slot Socket CPU</span>
+                            <div class="installed-item"></div>
+                        </div>
+                        <div class="drop-slot" data-slot-type="Cooler" id="slot-cooler">
+                            <span class="slot-label">Slot Pendingin CPU</span>
+                            <div class="installed-item"></div>
+                        </div>
+                        <div class="drop-slot" data-slot-type="RAM" id="slot-ram">
+                            <span class="slot-label">Slot Memori RAM</span>
+                            <div class="installed-item"></div>
+                        </div>
+                        <div class="drop-slot" data-slot-type="GPU" id="slot-gpu">
+                            <span class="slot-label">Slot PCIe Kartu Grafis</span>
+                            <div class="installed-item"></div>
+                        </div>
+                        <div class="drop-slot" data-slot-type="Storage" id="slot-storage">
+                            <span class="slot-label">Slot Penyimpanan M.2/SATA</span>
+                            <div class="installed-item"></div>
+                        </div>
+                        <div class="drop-slot" data-slot-type="PSU" id="slot-psu">
+                            <span class="slot-label">Slot Power Supply</span>
+                            <div class="installed-item"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitor Sistem Realtime -->
+                <div class="system-monitor-panel">
+                    <h3>📊 MONITOR SISTEM</h3>
+                    
+                    <div class="metric-group">
+                        <label>Konsumsi Daya Listrik:</label>
+                        <div class="progress-bar-bg"><div id="power-bar" class="progress-fill"></div></div>
+                        <span id="power-status-text">0W / 0W (Stabil)</span>
+                    </div>
+
+                    <div class="metric-group">
+                        <label>Suhu Processor (Thermal):</label>
+                        <div class="progress-bar-bg"><div id="thermal-bar" class="progress-fill"></div></div>
+                        <span id="thermal-status-text">30°C (Stabil)</span>
+                    </div>
+
+                    <div class="diagnostic-box">
+                        <h4>🔍 Output Diagnostik Sistem:</h4>
+                        <div id="diagnostic-log" class="log-content">Komponen belum terpasang lengkap atau sistem belum diuji.</div>
+                    </div>
+
+                    <button id="btn-verify-system" class="btn-cyber btn-success btn-full">UJI & VERIFIKASI SISTEM</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Quiz -->
+    <div id="modal-quiz" class="cyber-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="quiz-question-title">Quiz Hardware Komputer</h2>
+            <div id="quiz-body">
+                <p id="quiz-question-text"></p>
+                <div id="quiz-options-container" class="options-grid"></div>
+                <div id="quiz-feedback" class="feedback-box"></div>
+            </div>
+            <button id="btn-next-quiz" class="btn-cyber hidden">Pertanyaan Selanjutnya</button>
+        </div>
+    </div>
+
+    <!-- Modal Informasi (Cara Bermain & Pengaturan) -->
+    <div id="modal-info" class="cyber-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="modal-info-title">Informasi</h2>
+            <div id="modal-info-body"></div>
+        </div>
+    </div>
+
+    <script src="js/database.js"></script>
+    <script src="js/dungeon.js"></script>
+    <script src="js/assembly.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

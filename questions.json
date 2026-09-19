@@ -1,0 +1,29 @@
+[
+  {
+    "id": "q1",
+    "question": "Komponen mana yang berfungsi sebagai otak utama pengolah data pada komputer?",
+    "options": ["Memori RAM", "Power Supply (PSU)", "Processor (CPU)", "Harddisk / SSD"],
+    "correct_answer": 2,
+    "explanation": "Processor (CPU) bertindak sebagai pusat instruksi dan pengolahan data utama pada komputer.",
+    "difficulty": "mudah",
+    "related_component": "Processor"
+  },
+  {
+    "id": "q2",
+    "question": "Apa dampak negatif jika Anda memaksa memasang CPU socket AM4 ke Motherboard socket AM5?",
+    "options": ["Komputer bekerja lebih cepat", "Komponen fisik akan rusak dan tidak pas", "Sistem otomatis menyesuaikan", "Tidak ada dampak sama sekali"],
+    "correct_answer": 1,
+    "explanation": "Socket AM4 dan AM5 memiliki bentuk fisik dan susunan jarum/pin yang berbeda, sehingga memaksa pemasangannya akan merusak komponen.",
+    "difficulty": "sedang",
+    "related_component": "Motherboard"
+  },
+  {
+    "id": "q3",
+    "question": "Apakah fungsi utama dari Pasta Thermal (Thermal Paste) saat memasang Processor?",
+    "options": ["Sebagai lem perekat kuat", "Mengisi celah mikroskopis udara agar hantaran panas ke cooler optimal", "Menambah daya listrik CPU", "Sebagai hiasan visual"],
+    "correct_answer": 1,
+    "explanation": "Pasta thermal berfungsi menghilangkan rongga udara di antara permukaan CPU dan cooler sehingga transfer panas berlangsung efektif.",
+    "difficulty": "sedang",
+    "related_component": "Cooling"
+  }
+]

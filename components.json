@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cpu_am4_ryzen",
+    "name": "AMD Ryzen 5 5600X",
+    "category": "Processor",
+    "description": "Processor 6-Core 12-Thread kencang untuk socket AM4.",
+    "function": "Unit pemroses utama yang mengeksekusi instruksi dan program sistem.",
+    "specifications": { "socket": "AM4", "inti_core": 6, "kecepatan_dasar": "3.7 GHz" },
+    "power_watt": 65,
+    "compatibility": { "socket": ["AM4"] },
+    "difficulty": "pemula",
+    "educational_facts": ["Processor memerlukan pasta thermal dan pendingin yang tepat agar tidak mengalami overheating."]
+  },
+  {
+    "id": "cpu_am5_ryzen",
+    "name": "AMD Ryzen 7 7700X",
+    "category": "Processor",
+    "description": "Processor generasi terbaru dengan socket AM5 dan dukungan memori DDR5.",
+    "function": "Processor pemroses performa tinggi untuk komputasi dan grafis berat.",
+    "specifications": { "socket": "AM5", "inti_core": 8, "kecepatan_dasar": "4.5 GHz" },
+    "power_watt": 105,
+    "compatibility": { "socket": ["AM5"] },
+    "difficulty": "menengah",
+    "educational_facts": ["Socket AM5 menggunakan arsitektur LGA di mana jarum/pin berada di motherboard, bukan di CPU."]
+  },
+  {
+    "id": "mobo_am4_b550",
+    "name": "B550 Gaming Motherboard",
+    "category": "Motherboard",
+    "description": "Motherboard socket AM4 dengan dukungan PCIe 4.0 dan RAM DDR4.",
+    "function": "Papan sirkuit utama penyambung seluruh komponen komputer.",
+    "specifications": { "socket": "AM4", "slot_ram": "DDR4", "ukuran": "ATX" },
+    "power_watt": 30,
+    "compatibility": { "socket": ["AM4"], "ram_type": ["DDR4"] },
+    "difficulty": "pemula",
+    "educational_facts": ["Socket motherboard harus sama persis dengan jenis socket CPU yang akan dipasang."]
+  },
+  {
+    "id": "mobo_am5_x670",
+    "name": "X670 Cyber Motherboard",
+    "category": "Motherboard",
+    "description": "Motherboard kelas atas dengan socket AM5 untuk RAM DDR5.",
+    "function": "Papan sirkuit penyedia jalur data kecepatan tinggi.",
+    "specifications": { "socket": "AM5", "slot_ram": "DDR5", "ukuran": "ATX" },
+    "power_watt": 45,
+    "compatibility": { "socket": ["AM5"], "ram_type": ["DDR5"] },
+    "difficulty": "menengah",
+    "educational_facts": ["Motherboard socket AM5 tidak kompatibel secara fisik dengan RAM DDR4."]
+  },
+  {
+    "id": "ram_16gb_ddr4",
+    "name": "16GB DDR4 3200MHz RAM",
+    "category": "Memory",
+    "description": "Memori RAM DDR4 kapasitas 16GB berkecepatan tinggi.",
+    "function": "Menyimpan data aplikasi sementara saat komputer dinyalakan.",
+    "specifications": { "tipe": "DDR4", "kapasitas": "16GB" },
+    "power_watt": 5,
+    "compatibility": { "ram_type": "DDR4" },
+    "difficulty": "pemula",
+    "educational_facts": ["Memori RAM bersifat volatile, artinya data sementara akan terhapus jika listrik PC dimatikan."]
+  },
+  {
+    "id": "gpu_rtx_3060",
+    "name": "NVIDIA RTX 3060 12GB",
+    "category": "Graphics Card",
+    "description": "Kartu grafis menengah untuk rendering 3D, game, dan animasi.",
+    "function": "Mengolah dan menampilkan grafik visual ke layar monitor.",
+    "specifications": { "vram": "12GB", "antarmuka": "PCIe 4.0" },
+    "power_watt": 170,
+    "compatibility": { "interface": "PCIe" },
+    "difficulty": "pemula",
+    "educational_facts": ["Kartu grafis (GPU) adalah salah satu komponen yang mengonsumsi daya listrik terbesar."]
+  },
+  {
+    "id": "psu_500w",
+    "name": "500W 80+ Bronze PSU",
+    "category": "Power Supply",
+    "description": "Power Supply efisien dengan daya terukur 500 Watt.",
+    "function": "Mengubah arus listrik AC dari stopkontak menjadi arus DC untuk semua komponen.",
+    "specifications": { "kapasitas": "500W", "efisiensi": "80 Plus Bronze" },
+    "power_watt": 0,
+    "compatibility": {},
+    "difficulty": "pemula",
+    "educational_facts": ["PSU berkualitas melindungi komponen mahal komputer dari lonjakan arus listrik."]
+  },
+  {
+    "id": "psu_750w",
+    "name": "750W 80+ Gold PSU",
+    "category": "Power Supply",
+    "description": "Power Supply daya tinggi 750 Watt efisiensi Gold.",
+    "function": "Pemasok daya listrik stabil untuk sistem kelas berat.",
+    "specifications": { "kapasitas": "750W", "efisiensi": "80 Plus Gold" },
+    "power_watt": 0,
+    "compatibility": {},
+    "difficulty": "menengah",
+    "educational_facts": ["Sertifikasi 80 Plus menunjukkan tingkat efisiensi energi yang diubah oleh PSU."]
+  },
+  {
+    "id": "ssd_nvme_1tb",
+    "name": "1TB NVMe M.2 SSD",
+    "category": "Storage",
+    "description": "Media penyimpanan solid-state M.2 super cepat.",
+    "function": "Menyimpan sistem operasi (Windows/Linux) dan data pengguna secara permanen.",
+    "specifications": { "antarmuka": "NVMe M.2", "kapasitas": "1TB" },
+    "power_watt": 7,
+    "compatibility": {},
+    "difficulty": "pemula",
+    "educational_facts": ["SSD NVMe tidak memiliki bagian mekanis berputar sehingga jauh lebih cepat dan tahan guncangan ketimbang HDD."]
+  },
+  {
+    "id": "cooler_stock",
+    "name": "Pendingin CPU Standard Air Cooler",
+    "category": "Cooling",
+    "description": "Pendingin udara standar kipas pendingin CPU.",
+    "function": "Menyerap dan membuang panas berlebih dari permukaan processor.",
+    "specifications": { "tipe": "Air Cooler", "batas_tdp": "65W" },
+    "power_watt": 3,
+    "compatibility": {},
+    "difficulty": "pemula",
+    "educational_facts": ["Pendingin CPU wajib terpasang rapat agar processor tidak mengalami panas berlebih (thermal throttling)."]
+  }
+]
